@@ -1,0 +1,31 @@
+.nav-link {
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: #0d6efd !important;
+}
+
+@media screen and (max-width:767.9px) {
+    .nav-link {
+        color: black !important;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .nav-link {
+        color: white !important;
+        margin-left: 10px !important;
+        width: 100px;
+    }
+}
+
+.navbar-toggler {
+    border: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}

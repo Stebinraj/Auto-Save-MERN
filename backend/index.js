@@ -3,7 +3,6 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectMongoDB = require('./dbConfig/connectMongoDB');
-const blogModel = require('./models/blog');
 dotenv.config();
 
 const app = express();
