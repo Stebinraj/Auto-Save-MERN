@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// schema designing of blog app
 const blogSchema = mongoose.Schema(
     {
         title: {
