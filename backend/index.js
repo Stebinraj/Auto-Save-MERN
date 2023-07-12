@@ -16,8 +16,8 @@ app.use(morgan('dev'));
 // function to establish mongodb connections
 connectMongoDB();
 
-// Blog router
-app.use(require('./routes/blogRoute'));
+app.use(require('./routes/blogRoute')); // Blog router
+app.use(require('./routes/googleDocRoute')); // Google doc router
 
 // server listening  (.env obtained from the environment variables)
 app.listen(process.env.PORT, () => {
