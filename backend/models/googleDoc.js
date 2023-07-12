@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 // Schema designing of google docs
 const googleDocSchema = mongoose.Schema({
+    title: {
+        type: String,
+        default: ''
+    },
     text: {
         type: String,
         default: ''

@@ -7,7 +7,7 @@ router.route('/doc')
     .post(createDoc)
     .get(readDoc)
 
-router.route('/blog/:id')
+router.route('/doc/:id')
     .put(updateDoc)
     .delete(deleteDoc)
 // api to perform googleDoc CRUD end

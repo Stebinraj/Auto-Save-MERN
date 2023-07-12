@@ -39,7 +39,7 @@ const updateDoc = async (req, res) => {
 
         const documentData = req.body;
 
-        const updatedDocumentData = await googleDocModel.findByIdAndUpdate(id, { $set: { text: documentData } }, { new: true });
+        const updatedDocumentData = await googleDocModel.findByIdAndUpdate(id, { $set: documentData }, { new: true });
         if (updatedDocumentData) {
             res.send({ message: "Document updated", success: true });
         } else {

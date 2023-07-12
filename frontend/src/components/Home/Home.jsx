@@ -37,7 +37,7 @@ const Home = () => {
                                         <h5 className="card-title">{value.title}</h5>
                                         <h6>Category : {value.categories}</h6>
                                         <p className="card-text">{value.content}</p>
-                                        <p class="card-text"><small class="text-body-secondary">{moment(value.createdAt).format('DD-MM-YYYY')} - {value.author}</small></p>
+                                        <p className="card-text"><small className="text-body-secondary">{moment(value.createdAt).format('DD-MM-YYYY')} - {value.author}</small></p>
                                     </div>
                                 </div>
                             </div>

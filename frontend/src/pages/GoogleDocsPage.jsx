@@ -13,7 +13,9 @@ const GoogleDocsPage = () => {
             <Layouts
                 navbar={<Navbar />}
                 mainContent={<MainContent
-                    googleDocsPage={googleDocsPage && (<GoogleDocs />)}
+                    googleDocsPage={googleDocsPage && (<GoogleDocs
+                        googleDocsPage={googleDocsPage}
+                    />)}
                 />}
                 footer={<Footer />}
             />

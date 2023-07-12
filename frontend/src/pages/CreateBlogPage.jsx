@@ -14,7 +14,9 @@ const CreateBlogPage = () => {
             <Layouts
                 navbar={<Navbar />}
                 mainContent={<MainContent
-                    createBlogPage={createBlogPage && (<CreateBlog />)}
+                    createBlogPage={createBlogPage && (<CreateBlog
+                        createBlogPage={createBlogPage}
+                    />)}
                 />}
                 footer={<Footer />}
             />

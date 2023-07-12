@@ -6,7 +6,7 @@ import BlogTemplateModal from './BlogTemplateModal';
 import BlogForm from './BlogForm';
 import { useNavigate } from 'react-router-dom';
 
-const CreateBlog = () => {
+const CreateBlog = ({ createBlogPage }) => {
 
     const [blogData, setBlogData] = useState({
         title: '',
@@ -45,8 +45,9 @@ const CreateBlog = () => {
     };
 
     // handle editing of draft blog template
-    const handleEditBlog = async (value) => {
+    const handleEditBlog = async (e,value) => {
         try {
+            e.preventDefault();
             setId(value._id);
             setBlogData({
                 ...blogData,
@@ -118,7 +119,7 @@ const CreateBlog = () => {
                         categories: categories
                     });
                     if (response && response.data.success) {
-                        await getBlogDraft();;
+                        await getBlogDraft();
                     }
                 }
                 autoSaveBlog();
@@ -128,7 +129,7 @@ const CreateBlog = () => {
         } finally {
             setIsAutoSaving(false);
         }
-    }, [blogData])
+    }, [blogData]);
 
     return (
         <>
@@ -136,6 +137,7 @@ const CreateBlog = () => {
                 {/* create blog draft button component */}
                 <CreateBlogDraftButton
                     createBlogDraft={createBlogDraft}
+                    createBlogPage={createBlogPage}
                 />
 
                 {/* Blog template modal component */}
