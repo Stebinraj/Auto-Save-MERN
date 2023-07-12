@@ -1,28 +1,48 @@
-import React from 'react'
+import axios from 'axios';
+import moment from 'moment/moment';
+import React, { useEffect, useState } from 'react'
 
 const Home = () => {
+
+    const [blogData, setBlogData] = useState([]);
+
+    // fetch blog posts
+    const getBlog = async () => {
+        try {
+            const response = await axios.get('/blog');
+            if (response && response.data.success) {
+                setBlogData(response.data.data.filter(items => items.isPublished === true));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    // handle the side effects while fetching blog posts
+    useEffect(() => {
+        getBlog();
+    }, [])
+
+
     return (
         <>
             <main className="container-fluid flex-grow-1">
                 <div className="row mt-2">
-                    <div className="col-sm-12 col-md-4 m-auto mt-2" style={{ border: '2px solid red' }}>
-                        <div className="card">
-                            <img src="..." className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    {blogData.map((value, index) => {
+                        return (
+                            <div className="col-sm-12 col-md-4 m-auto mt-2" key={index}>
+                                <div className="card">
+                                    <img src="..." className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{value.title}</h5>
+                                        <h6>Category : {value.categories}</h6>
+                                        <p className="card-text">{value.content}</p>
+                                        <p class="card-text"><small class="text-body-secondary">{moment(value.createdAt).format('DD-MM-YYYY')} - {value.author}</small></p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-12 col-md-4 m-auto mt-2" style={{ border: '2px solid red' }}>
-                        <div className="card">
-                            <img src="..." className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
+                        )
+                    })}
                 </div>
             </main>
         </>

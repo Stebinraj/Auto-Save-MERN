@@ -4,6 +4,7 @@ import axios from 'axios';
 import BlogDraft from './BlogDraft';
 import BlogTemplateModal from './BlogTemplateModal';
 import BlogForm from './BlogForm';
+import { useNavigate } from 'react-router-dom';
 
 const CreateBlog = () => {
 
@@ -11,11 +12,13 @@ const CreateBlog = () => {
         title: '',
         content: '',
         author: '',
-        categories: ''
+        categories: '',
+        isPublished: ''
     }); //blog data to send backend
     const [blogDraftData, setBlogDraftData] = useState([]); //fetch and set the data of  draft blog
     const [isAutoSaving, setIsAutoSaving] = useState(false); //show the status while autosaving as saving and saved
-    const [id, setId] = useState(''); ///store the id of blog draft
+    const [id, setId] = useState(''); //store the id of blog draft
+    const navigate = useNavigate();
 
     // create blog draft blank template
     const createBlogDraft = async () => {
@@ -50,7 +53,8 @@ const CreateBlog = () => {
                 title: value.title,
                 content: value.content,
                 author: value.author,
-                categories: value.categories
+                categories: value.categories,
+                isPublished: value.isPublished
             });
         } catch (error) {
             console.log(error);
@@ -74,7 +78,22 @@ const CreateBlog = () => {
     const handleCloseModal = async () => {
         try {
             setId('');
-            setBlogData({ ...blogData, title: '', content: '', author: '', categories: '' });
+            setBlogData({ ...blogData, title: '', content: '', author: '', categories: '', isPublished: '' });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // publish the auto saved blog
+    const publishBlog = async (e, publishStatus) => {
+        try {
+            e.preventDefault();
+            await handleCloseModal();
+            const response = await axios.put(`/blog/${id}`, { isPublished: publishStatus });
+            if (response && response.data.success) {
+                await getBlogDraft();
+                // navigate('/', { replace: true });
+            }
         } catch (error) {
             console.log(error);
         }
@@ -125,6 +144,7 @@ const CreateBlog = () => {
                         blogData={blogData}
                         setBlogData={setBlogData}
                         isAutoSaving={isAutoSaving}
+                        publishBlog={publishBlog}
                     />}
                     handleCloseModal={handleCloseModal}
                 />

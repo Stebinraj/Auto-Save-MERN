@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BlogForm = ({ blogData, setBlogData, isAutoSaving }) => {
+const BlogForm = ({ blogData, setBlogData, isAutoSaving, publishBlog }) => {
     return (
         <>
             <form>
@@ -20,7 +20,12 @@ const BlogForm = ({ blogData, setBlogData, isAutoSaving }) => {
                     <label className="form-label" htmlFor="categories">Categories</label>
                     <input className='form-control' type="text" id='categories' onChange={(e) => { setBlogData({ ...blogData, categories: e.target.value }) }} value={blogData.categories} />
                 </div>
-                <button className='form-control btn btn-primary mt-3 w-25 mx-auto d-block' type='submit' id='btn'>Publish</button>
+                <button className='form-control btn btn-primary mt-3 w-25 mx-auto d-block' id="closeAdjustmentModalButton" data-bs-dismiss="modal" aria-label="Close"
+                    onClick={(e) => {
+                        blogData.isPublished ? (publishBlog(e, false)) : (publishBlog(e, true))
+                    }}>
+                    {blogData.isPublished ? ('Unpublish') : ('Publish')}
+                </button>
                 <small>{isAutoSaving ? ('Saving...') : ('Saved')}</small>
             </form>
         </>

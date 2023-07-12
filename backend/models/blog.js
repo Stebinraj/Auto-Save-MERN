@@ -18,6 +18,10 @@ const blogSchema = mongoose.Schema(
         categories: {
             type: String,
             default: ''
+        },
+        isPublished: {
+            type: Boolean,
+            default: false
         }
     },
     {
