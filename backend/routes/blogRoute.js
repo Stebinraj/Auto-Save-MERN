@@ -3,11 +3,11 @@ const { createBlog, readBlog, updateBlog, deleteBlog } = require('../controller/
 const router = require('express').Router();
 
 // api to perform blog CRUD start
-router.route('/create/blog')
+router.route('/blog')
     .post(createBlog)
     .get(readBlog)
 
-router.route('/create/blog/:id')
+router.route('/blog/:id')
     .put(updateBlog)
     .delete(deleteBlog)
 // api to perform blog CRUD end

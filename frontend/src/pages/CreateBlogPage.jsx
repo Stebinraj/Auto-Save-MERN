@@ -3,18 +3,18 @@ import Layouts from '../components/Layouts/Layouts';
 import Navbar from '../components/Layouts/Navbar';
 import MainContent from '../components/Layouts/MainContent';
 import Footer from '../components/Layouts/Footer';
-import CreatePost from '../components/CreatePost/CreatePost';
+import CreateBlog from '../components/CreateBlog/CreateBlog';
 
-const CreatePostPage = () => {
+const CreateBlogPage = () => {
 
-    const createPostPage = true;
+    const createBlogPage = true;
 
     return (
         <>
             <Layouts
                 navbar={<Navbar />}
                 mainContent={<MainContent
-                    createPostPage={createPostPage && (<CreatePost />)}
+                    createBlogPage={createBlogPage && (<CreateBlog />)}
                 />}
                 footer={<Footer />}
             />
@@ -22,4 +22,4 @@ const CreatePostPage = () => {
     )
 }
 
-export default CreatePostPage
+export default CreateBlogPage

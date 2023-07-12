@@ -5,7 +5,7 @@ const Navbar = () => {
 
     const navbarLinks = [
         { title: 'Home', path: '/' },
-        { title: 'New Post', path: '/create/post' }
+        { title: 'New Post', path: '/create/blog' }
     ];
 
     return (

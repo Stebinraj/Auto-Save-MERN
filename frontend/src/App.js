@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import CreatePostPage from './pages/CreatePostPage';
 import './App.css'
+import CreateBlogPage from './pages/CreateBlogPage';
 
 function App() {
     return (
         <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/create/post' element={<CreatePostPage />} />
+            <Route path='/create/blog' element={<CreateBlogPage />} />
         </Routes>
     );
 }
