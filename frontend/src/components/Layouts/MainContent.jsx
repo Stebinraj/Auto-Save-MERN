@@ -1,10 +1,11 @@
 import React from 'react'
 
-const MainContent = ({ homePage, createBlogPage }) => {
+const MainContent = ({ homePage, createBlogPage, googleDocsPage }) => {
     return (
         <>
             {homePage}
             {createBlogPage}
+            {googleDocsPage}
         </>
     )
 }
