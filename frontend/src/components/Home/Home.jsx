@@ -26,7 +26,7 @@ const Home = () => {
 
     return (
         <>
-            <main className="container-fluid flex-grow-1">
+            <main className="container-fluid flex-grow-1 bg-primary">
                 {/* Blog post component */}
                 <BlogPost
                     blogData={blogData}
