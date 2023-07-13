@@ -4,7 +4,7 @@ import axios from 'axios';
 import BlogDraft from './BlogDraft';
 import BlogTemplateModal from './BlogTemplateModal';
 import BlogForm from './BlogForm';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CreateBlog = ({ createBlogPage }) => {
 
@@ -18,7 +18,7 @@ const CreateBlog = ({ createBlogPage }) => {
     const [blogDraftData, setBlogDraftData] = useState([]); //fetch and set the data of  draft blog
     const [isAutoSaving, setIsAutoSaving] = useState(false); //show the status while autosaving as saving and saved
     const [id, setId] = useState(''); //store the id of blog draft
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // create blog draft blank template
     const createBlogDraft = async () => {
@@ -92,8 +92,7 @@ const CreateBlog = ({ createBlogPage }) => {
             await handleCloseModal();
             const response = await axios.put(`/blog/${id}`, { isPublished: publishStatus });
             if (response && response.data.success) {
-                await getBlogDraft();
-                // navigate('/', { replace: true });
+                navigate('/', { replace: true });
             }
         } catch (error) {
             console.log(error);
