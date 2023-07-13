@@ -104,7 +104,7 @@ const GoogleDocs = ({ googleDocsPage }) => {
         } finally {
             setIsAutoSaving(false);
         }
-    }, [googleDocData]);
+    }, [googleDocData, id]);
 
     return (
         <main className="container-fluid flex-grow-1">

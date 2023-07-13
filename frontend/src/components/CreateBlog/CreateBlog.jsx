@@ -4,7 +4,7 @@ import axios from 'axios';
 import BlogDraft from './BlogDraft';
 import BlogTemplateModal from './BlogTemplateModal';
 import BlogForm from './BlogForm';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const CreateBlog = ({ createBlogPage }) => {
 
@@ -13,12 +13,12 @@ const CreateBlog = ({ createBlogPage }) => {
         content: '',
         author: '',
         categories: '',
-        isPublished: ''
+        isPublished: '',
     }); //blog data to send backend
     const [blogDraftData, setBlogDraftData] = useState([]); //fetch and set the data of  draft blog
     const [isAutoSaving, setIsAutoSaving] = useState(false); //show the status while autosaving as saving and saved
     const [id, setId] = useState(''); //store the id of blog draft
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // create blog draft blank template
     const createBlogDraft = async () => {
@@ -45,7 +45,7 @@ const CreateBlog = ({ createBlogPage }) => {
     };
 
     // handle editing of draft blog template
-    const handleEditBlog = async (e,value) => {
+    const handleEditBlog = async (e, value) => {
         try {
             e.preventDefault();
             setId(value._id);
@@ -129,7 +129,7 @@ const CreateBlog = ({ createBlogPage }) => {
         } finally {
             setIsAutoSaving(false);
         }
-    }, [blogData]);
+    }, [blogData, id]);
 
     return (
         <>

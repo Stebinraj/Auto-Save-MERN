@@ -9,7 +9,7 @@ const GoogleDocForm = ({ googleDocData, setGoogleDocData, isAutoSaving }) => {
             </div>
             <div className="form-group">
                 <label className="form-label" htmlFor="content">Text</label>
-                <textarea className='form-control' autoComplete='content' id='content' onChange={(e) => { setGoogleDocData({ ...googleDocData, text: e.target.value }) }} value={googleDocData.text} />
+                <textarea className='form-control' autoComplete='content' id='content' onChange={(e) => { setGoogleDocData({ ...googleDocData, text: e.target.value }) }} value={googleDocData.text} style={{height:'330px'}}/>
             </div>
             <p className='text-end'>{isAutoSaving ? ('Saving...') : ('Saved')}</p>
         </form>
